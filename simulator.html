@@ -1,225 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SCREEN SHAPE SIMULATOR</title>
-<meta name="description" content="Test responsiveness of your web site
-using the screen shape simulator">
-<meta name="author" content="Tanja Krunic"></meta>
-<style>
-body {
-  display: table;
-  height: auto;
-  padding: 100px 0;
-  color: #000;
-  background: linear-gradient(90deg, rgba(238,177,234,1) 35%, rgba(218,13,232,1) 100%);
-}
-.container {
-  color: black;
-  text-shadow: -1px 1px 5px #b1a6a6;
-  font-weight: bold;
-}
-h1,
-h2 {
-  text-align: center;
-  width: 100%;
-  float: left;
-}
-
-div.content div.wrap {
-  width: 100%;
-  //float: left;
-}
-div.content div.wrap:nth-child(1) div:nth-child(1) {
-  margin-left: calc(50% - 120px);
-}
-div.content div.wrap:nth-child(3) {
-  width: 100%;
-  background: silver;
-  margin-top: 30px;
-}
-div.content div.wrap:nth-child(3) div input {
-  width: 50%;
-  margin-left: 25%;
-}
-div.content div.wrap div {
-  width: 100px;
-  float: left;
-}
-div.content div.wrap div input {
-  width: calc(100% - 30px);
-}
-div.content div.wrap div:nth-child(2) {
-  width: 40px;
-  float: left;
-  text-align: center;
-}
-div.content div:nth-child(3) div {
-  width: 100%;
-}
-div.content div:nth-child(3) div input {
-  width: 50%;
-  margin-left: 25%;
-}
-iframe{margin:auto;
-display:block;}
-
-.dim{margin:25px auto;
-text-align:center;}
-
-.in{display:inline;
- margin:10px;
- font-weigth:bold;
- font-size:1.3em;}
-
-#shape{margin-bottom:20px;}
-}
-body{margin:auto;
-background: rgb(238,177,234);
-
-}
-iframe{
-border:none;
-overflow:hidden;}
-
-#url{
-margin:auto;
-width:300px;
-display:inline;
-border-radius:5px;
-background:beige;
-}
-#btn{
-display:inline;
-background:beige;
-padding:7px;
-font-weight:bold;
-border-radius:5px;}
-label{
-font-weight:bold;}
-p{margin-left:30px;}
-.tekst{text-align:justify;
-	margin-right:30px;}
-</style>
-</head>
-<body>
-<h1> ONLINE RESPONSIVE TESTING TOOL</h1>
-<h2>Simulate various screen shapes</h2>
-<p class="tekst">Use this application to check the layout
- of your page on various screens. Check the desired screen shapes
- and copy and the the appropriate URL address of your web page into
- the input field. In order to check some changes of your style, 
- you are encouraged to use the Inspect element tool. </p>
-<div>
-<p id="square1"><input type="checkbox" id="square" onClick="cShape('square','sq')">Square</p>
-<p id="round1"><input type="checkbox" id="round" onClick="cShape('round','rnd')">Round</p>
-<p id="triangle1"><input type="checkbox" id="triangle" onClick="cShape('triangle','tr')">Triangle</p>
-<p id="hexagon1"><input type="checkbox" id="hexagon" onClick="cShape('hexagon','hex')">Hexagon</p>
-<p id="octagon1"><input type="checkbox" id="octagon" onClick="cShape('octagon','oct')">Octagon</p>
-<p id="rhombus1"><input type="checkbox" id="rhombus" onClick="cShape('rhombus','rh')">Rhombus</p>
-</div>
-<div id="simulator"></div>
-
-<script>
-
-function sajt()
-{
-
-var adresa=document.getElementById("url").value;
-
-var okviri=document.getElementsByTagName("iframe");
-var n=okviri.length;
-for(i=0;i<n;i++)
-{
-okviri[i].src=adresa;
-}
-
-return;
-}
-
-
-function fun_w(si,z){
-z.style.width=si.value+"px";
-return;
-}
-
-function fun_h(vi,z){
-z.style.height=vi.value+"px";
-return;
-}
-
-function cShape(y,z)
-{
-var fr=document.getElementById("f");
-var x=document.getElementById(y);
-if(x.checked==true)
-{
-var dodaj=document.createElement("iframe");
-dodaj.setAttribute("src","https://htmlpreview.github.io/?https://github.com/screenShapeSimulator/responsiveTester/blob/master/test.html");
-dodaj.setAttribute('id', z);
-dodaj.setAttribute("scrolling", "yes");
-
-  switch(y) {
-  case "round":
-   dodaj.style.borderRadius="100%";
-   break;
-  case "triangle":
-    dodaj.style.clipPath="polygon(50% 0%, 0% 100%, 100% 100%)";
- break;
- case "hexagon":
-    dodaj.style.clipPath="polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)";
- break;
- case "octagon":
-    dodaj.style.clipPath=" polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)";
- break;
- case "rhombus":
-    dodaj.style.clipPath=" polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)";
- break;
- default:
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Print Firma</title>
+    <link rel="stylesheet" href="styles.css">
+     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+     <link rel="icon" href="icons8-favicon-50.png">
+     <link rel="manifest" href="/site.webmanifest">
     
-} 
+</head>
 
-var m=document.getElementById("simulator");
-m.appendChild(dodaj);
-var si="w"+y;
-var vi="h"+y;
-var kod="<div class='in'><label>W</label><input id='"+si+"' value='300' type='number' onChange='fun_w("+si+","+z+")'/></div>"+
-		"<div class='in'><label>x</label></div><div class='in'><label>H</label><input id='"+vi+"' value='300' type='number' onChange='fun_h("+vi+","+z+")'/></div>"
-var izbor=document.createElement("div");
-    izbor.innerHTML=kod;
- 	izbor.setAttribute("class","dim");	
-	izbor.setAttribute('id', (z+0));
- 	(document.getElementById("simulator")).appendChild(izbor);
-	
+<body>
+    <header>
+        <h1>DIGITAL PRINT</h1>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Logo" class="logo">
 
-		}
-else
-{
-var obrisi=document.getElementById(z);
-obrisi.remove();
-var obrisi1=document.getElementById(z+0);
-obrisi1.remove();
-}
+        </div>
+    </header>
+    <div class="navigacija">
+        <nav>
+            <ul>
+                <li> <a href="index.html">Početna</a></li>
+                <li> <a href="onama.html">O nama</a></li>
+                <li> <a href="portfolio.html">Portfolio</a></li>
+                <li> <a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="prva-container">
+        <section class="portfolio">
+            <img src="portfolio1.jpg" alt="portfolio">
+        </section>
+
+        <section class="prva-text">
+
+            <p>Dobrodošli u Digital Print, vašeg partnera za sve vaše potrebe u oblasti grafičkog dizajna.</p>
+            <p>Mi smo firma koja se bavi grafičkim dizajnom specijalizovana je za stvaranje vizualnih identiteta koji
+                ostavljaju snažan
+                utisak. Sve sto vam treba za vasu firmu na jednom mestu.</p>
+        </section>
 
 
-return;
-}
+    </div>
+    <section>
+        <h2>Kontakt</h2>
+        <p>Za više informacija:</p>
+        <p>Email: info@nasafirma.com</p>
+        <p>Telefon: +22565862</p>
+    </section>
 
+    <footer>
+    <section class="footer-social">
+        <img src="instagram.png" alt="Instagram">
+        <img src="facebook.png" alt="facebook">
+    </section>
 
-</script>
+    <p>&copy; 2024 Digital Print firma</p>
+</footer>
 
-<div class="content">
-	
-	<div class="wrap">
-		<div >
-			<label>URL</label>
-			<input  id="url" oninput="sajt()" type="text" size="120" placeholder="http://myWebPage.html" style="padding:10px;margin-top:10px;margin-bottom:10px;" /><input type ="button" value="Go" onclick="sajt()" id="btn"></input>
-		</div>
-	</div>
-</div>
 
 </body>
+
 </html>
-<!--Ovo je test-->
-<!--  https://github.com/screenShapeSimulator/responsiveTester.git -->
